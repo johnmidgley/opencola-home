@@ -1,11 +1,20 @@
 body {
     font-family: 'Montserrat', sans-serif;
     /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
-    margin: 20px auto;
+    margin: 0;
+    padding: 0;
     background-color: #f4f4f4;
     color: #333;
-    max-width: 800px;
     line-height: 1.4;
+    align-items: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto; /* Auto margin horizontally to center the container */
+    padding: 20px;
+    background-color: #ffffff; /* Set a background color for the container if needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional box shadow for the container */
 }
 
 a {
