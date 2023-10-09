@@ -16,7 +16,14 @@
             alternative to big tech that puts you in control of your personal data and
             allows you to shape the flow of information around you.
         </p>
-        
+
+        <p>If you're interested in trying our alpha, select your operating environment:</p>
+        <div class="install-icons">
+        <a class="button-link" href="https://github.com/johnmidgley/opencola-alpha/blob/main/docs/macOS/install.md">Mac OS</a>
+        <a class="button-link" href="https://github.com/johnmidgley/opencola-alpha/blob/main/docs/windows/install.md">Windows</a>
+        <a class="button-link" href="https://github.com/johnmidgley/opencola-alpha/blob/main/docs/linux/install.md">Linux</a>
+        <a class="button-link" href="https://github.com/johnmidgley/opencola-alpha/blob/main/docs/docker/install.md">Docker</a>
+        </div>
         <h2>Sounds great, but what does OpenCola actually do?</h2>
         
         <p>
@@ -98,6 +105,9 @@
                 security leads to higher trust.
             </li>
         </ul>
+        <p>
+            Each one of these principles is largely minimized by companies whose objective is to maximize profit.
+        </p>
         <h2>So why should I trust OpenCola?</h2>
         <p>
             Fair question. We’ve all been burned too many times. Companies have been
@@ -272,6 +282,138 @@
             practical for bots to impact your network.
         </li>
     </ul>
+    <h2>How is OpenCola different?</h2>
+    <p>
+        There are many great applications / platforms out there that attempt to
+        solve important problems. Some are low level, more technical solutions
+        (e.g. <a href="https://solidproject.org/">Solid</a>), while others are
+        high level solutions (e.g. <a
+        href="https://mastodon.social/explore">Mastadon</a>). Low level
+        solutions are often light on product vision or are too complicated for
+        everyday people to use. High level solutions often have a very specific
+        product vision, and so are of limited use.
+    </p>
+    <p>
+        OpenCola was designed to be able to model any application domain, and
+        make use of any technologies that can be wrapped by the small set of
+        interfaces (see the technical FAQ). So, OpenCola is not one specific
+        application, nor is it one specific network. It allows for arbitrary
+        domains to be modeled and interconnected with arbitrary networks. Things
+        like Solid and Mastadon could easily be integrated into OpenCola
+        applications (which we plan to do).
+    </p>
+    <p>
+        Because of its design, OpenCola is agnostic to network toplogy and has
+        the flexibility to operate on any scale from pure peer-to-peer all the
+        way to fully centralized. 
+    </p>
+    <h2>Who are you, and why are you building OpenCola?</h2>
+    <p>
+        We are people that are tired of the state of the Internet and would like
+        to help fix it, because it’s a problem worth solving, even if we don’t
+        make loads of money doing it. The founders of OpenCola all worked at the
+        <a href="https://en.everybodywiki.com/Opencola_(company)">original
+        OpenCola</a>, founded in 1999, which was building something similar in
+        spirit, but was unfortunately too far ahead of its time. We’ve all
+        gained a lot of experience and seen what the Internet has become and
+        would like to do what we can to steer it in the right direction.
+    </p>
+    <h2>Frequently Asked Questions</h2>
+    <h3>How do you stop bad people from using OpenCola?</h3>
+    <p>
+        We don’t. Anything we do to monitor or control activity requires
+        invading privacy and undermines our trust values. Every technology
+        has unintended consequences. The Internet enables bad things, but if
+        you’re reading this, then you’re using it, despite the fact that
+        people can do bad things with it, likely because you believe that it
+        brings more good than harm. Similarly, we believe that the world is
+        better with OpenCola than without it, even if people use it in ways
+        that we don’t support. 
+    </p>
+    <h3>Does OpenCola address “Filter Bubbles”?</h3>
+    <p>
+        Yes and no. Since people, rather than algorithms, control the flow
+        of information, algorithmic filter bubbles are not an issue. But
+        people have their own biases and preferences, which can also lead to
+        filter bubbles as well as “echo chambers”. These are social, not
+        technical issues, that we believe cannot be fixed by forcing people
+        to consume information that they disagree with. Who or what would
+        even decide what people should see? Certainly not us. We believe
+        that the trust environment provided by OpenCola, which is less
+        polarized, is more likely to open minds than anything offered by ad
+        driven, for profit companies or any algorithmic / technological
+        solution.
+    </p>
+    <h3>How do you connect with people you don’t know?</h3>
+    <p>
+        Traditional social media has a loose trust model, which allows
+        people to connect with or follow other people with little or no
+        permission required. With OpenCola, because we’re focused on trusted
+        connections, currently both ends of a connection need to agree to
+        share information. As publishing is a useful activity, though, we
+        intend to support a publisher model, where you can create personas
+        that can be connected to by anyone. 
+    </p>
+    <p>
+        While technically simple, the question then becomes should we
+        support searching for publishers? This opens the door to
+        <a
+        href="https://www.theguardian.com/technology/2022/nov/11/twitter-blue-check-verification-impostor-accounts">
+        verification problems</a>, so we think publishers would need to
+        communicate their ids outside of OpenCola, like you do today when
+        sharing an email address or any other social media id. OpenCola
+        could then just host (cryptographically) verified details about
+        publishers, including where information posted by the publisher can
+        be retrieved. 
+    </p>
+    <h2>High Level Technical Details</h2>
+        <h3>How is Data Modeled in OpenCola?</h3>
+        <p>
+            The core of OpenCola is how it represents information. Each “atom” of
+            information is represented as a fact that is a data structure with the
+            following fields:
+        </p>
+        <ul>
+            <li><b>authorityId</b>: the globally unique id of the actor (you, a peer, etc.) asserting the fact</li>
+            <li><b>entityId</b>: the globally unique id of the subject (a resource, actor, piece of data, etc) of the fact</li>
+            <li><b>attribute</b>: a url indicating the attribute of the entity (name, description, imageUrl, etc) referred to by the fact</li>
+            <li><b>value</b>: a binary representation of the attribute’s value</li>
+            <li><b>operation</b>: Whether the fact is being added or retracted</li>
+            <li><b>time</b>: The time the fact was asserted</li>
+            <li><b>transactionId</b>: the globally unique identifier for the transaction that this fact is part of</li>
+        </ul>
+        <p>
+            Modeling information this way makes it trivial to add new attributes
+            and provides a simple, common data schema that applications can be
+            built on top of.
+        </p>
+        <p>
+            As a bonus, modeling information this way supports “time traveling”
+            where you can modify any query to return results up to a given point
+            in time. This enables use cases where you want to see your feed (or
+            search) exactly as it was on a given date in the past. 
+        </p>
+        <h3>What are the core components of OpenCola?</h3>
+        <p>Under the hood, OpenCola is built on 4 interfaces:</p> 
+        <ul>
+            <li><b>EntityStore</b>: Where data about posts is stored (title, link, description, comments, etc…).</li> 
+            <li><b>FileStore</b>: A content addressable file store where attachments or web page archives are stored.</li>
+            <li><b>SearchIndex</b>: Enables search across any attribute marked for indexing</li>
+            <li><b>NetworkProvider</b>: Enables communication between peers</li>
+        </ul>
+        <p>
+            Each of these interfaces can be implemented locally or interact with
+            a remote or centralized server. So OpenCola can operate on any scale
+            from pure Peer to Peer all the way to fully centralized. 
+        </p>
+        <p>
+            Since these interfaces are free to be implemented and modified, you
+            have the freedom to re-configure OpenCola any way that meets your
+            trust needs. The average person probably wants the “batteries
+            included” solution, with some centralization, whereas a human rights
+            worker may need a more sophisticated, security-at-all-costs
+            solution, that is more pure peer to peer.
+        </p>
 </div>
 </body>
 </html>

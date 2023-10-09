@@ -21,13 +21,12 @@ a {
     text-decoration: none;
 }
 
-h2 {
-    transform-origin: left; /* Set the transformation origin to the left */
-    transition: transform 0.2s ease-in-out; /* Add a smooth transition effect for both hover and non-hover states */
+h1 {
+    text-align: center;
 }
 
-h2:hover {
-    transform: scale(1.02);
+h2, h3 {
+    color: red; /* Initial color */
 }
 
 li {
@@ -37,4 +36,30 @@ li {
 .logo {
     text-align: center;
     margin: 30px;
+}
+
+.install-icons {
+    text-align: center; /* Horizontally center the text within the container */
+    margin: 40px;
+}
+
+.button-link {
+    display: inline-block;
+    margin: 4px;
+    padding: 5px 20px; /* Adjust the padding to control the button size */
+    background-color: #ff0000; /* Button background color */
+    color: #ffffff; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 20px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px; /* Adjust font size as needed */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+    transition: transform 0.3s;
+}
+
+.button-link:hover {
+    background-color: #ff3333; /* New background color on hover */
+    color: #ffffff; /* New text color on hover */
+    transform: scale(1.1);
 }
