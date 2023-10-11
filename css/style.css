@@ -1,4 +1,19 @@
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('../fonts/source-code-pro/ttf/SourceCodePro-Regular.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Source Code Pro';
+    src: url('../fonts/source-code-pro/ttf/SourceCodePro-Bold.ttf') format('truetype'); 
+    font-weight: bold;
+    font-style: normal;
+  }
+  
 body {
+    /* font-family: 'Source Code Pro'; */
     font-family: 'Montserrat', sans-serif;
     /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
     margin: 0;
@@ -35,7 +50,12 @@ li {
 
 .logo {
     text-align: center;
-    margin: 30px;
+    margin: 90px;
+    margin-top: 40px;
+}
+
+.logo-img {
+    -webkit-box-reflect: below 8px -webkit-gradient(linear, right top, right bottom, from(transparent), color-stop(50%, transparent), to(rgba(255, 255, 255, 0.1)));
 }
 
 .install-icons {
