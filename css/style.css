@@ -64,6 +64,22 @@ li {
     padding: 4px;
 }
 
+.notice {
+    background-color: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.notice h2 {
+    color: #856404;
+}
+
+.notice p {
+    color: #664d03;
+}
+
 .logo {
     text-align: center;
     margin: 90px;
